@@ -1,0 +1,50 @@
+Table users {
+    id integer [primary key]
+    username varchar
+    created_at timestamp
+    bio text
+    favorite_genres varchar[]
+    email varchar
+    password varchar
+    links text
+    photo_url varchar
+    favorite_movies integer[] // IDs dos filmes favoritos na API TMDb
+}
+
+Table friendships {
+    id integer [primary key]
+    user_1_id integer
+    user_2_id integer
+    created_at timestamp
+    status varchar [note: 'status can be pending, accepted, declined']
+}
+
+Ref: friendships.user_1_id > users.id
+
+Ref: friendships.user_2_id > users.id
+
+Table reviews {
+    id integer [primary key]
+    user_id integer
+    movie_id integer // ID do filme na API TMDb
+    opinion varchar
+    created_at timestamp
+    rating integer
+    recommended boolean
+    watched boolean
+}
+
+Ref: reviews.user_id > users.id
+
+Table events {
+    id integer [primary key]
+    title varchar
+    users_id integer[]
+    created_at timestamp
+    description text
+    location varchar
+    date timestamp
+    movie_id integer // ID do filme na API TMDb (opcional)
+}
+
+Ref: events.users_id > users.id

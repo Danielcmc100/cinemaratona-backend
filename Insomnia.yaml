@@ -1,0 +1,230 @@
+_type: export
+__export_format: 4
+__export_date: 2025-03-16T16:44:26.990Z
+__export_source: insomnia.desktop.app:v10.1.1
+resources:
+  - _id: req_71bc5e7c2e8f43dc8af43a71a5f55783
+    parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    modified: 1742094420810
+    created: 1742094189918
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805985
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
+    modified: 1742094228345
+    created: 1742094189917
+    name: Usuarios
+    description: ""
+    environment:
+      resource: user
+    environmentPropertyOrder:
+      "&":
+        - resource
+    metaSortKey: -1741737781306
+    _type: request_group
+  - _id: wrk_e787fa5cf04f4c749fca51505b05a69c
+    parentId: null
+    modified: 1741736578492
+    created: 1741736578492
+    name: Cinemaratona
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_1b5eb81037834f87a28df3d49edb0e64
+    parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    modified: 1742142220105
+    created: 1742094189919
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Get by id
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_856b60691d0b4fdeadf44352637fb60a
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805885
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_eb39f62a833d455796d62954bc05062b
+    parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    modified: 1742096248097
+    created: 1742094189921
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Post
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "UserName": "{% faker 'randomFirstName' %}",
+            "CreatedAt": "{% faker 'isoTimestamp' %}",
+            "Bio": "{% faker 'randomLoremText' %}",
+            "FavoriteGenres": [],
+            "Email": "{% faker 'randomEmail' %}",
+            "Password": "{% faker 'randomPassword' %}",
+            "Links": "",
+            "PhotoUrl": "{% faker 'randomImageUrl' %}",
+            "FavoriteMovies": []
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805785
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_453c2f03e79b418d886b49192e711d92
+    parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    modified: 1742142378846
+    created: 1742094189922
+    url: "{{ _.url }}/{{ _.resource }}/"
+    name: Put
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": 2,
+        	"userName": "Dome1791nica",
+        	"createdAt": "2026-03-07T03:30:26.232",
+        	"bio": "Natus tamisium color adnuo.",
+        	"favoriteGenres": [],
+        	"email": "Brant29@yahoo.com",
+        	"password": "G0m_VN7XVLcFr4A",
+        	"links": "",
+        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
+        	"favoriteMovies": []
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1736556316344
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f9552aa917424755a79fc61ae0057ff7
+    parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    modified: 1742142484711
+    created: 1742094189923
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_5e98c0baad9e4aa79f3085fe1b08da97
+        name: ""
+        value: ""
+        description: ""
+        disabled: true
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1733966071623.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_be09076edb3b49a18b860f850451062f05c01200
+    parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
+    modified: 1741736578493
+    created: 1741736578493
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1741736578493
+    _type: environment
+  - _id: jar_be09076edb3b49a18b860f850451062f05c01200
+    parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
+    modified: 1741736578494
+    created: 1741736578494
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: env_e265d36b40af4853b581fed2378f34c0
+    parentId: env_be09076edb3b49a18b860f850451062f05c01200
+    modified: 1741737384733
+    created: 1741737180719
+    name: Development
+    data:
+      url: localhost:5199/api
+    dataPropertyOrder:
+      "&":
+        - url
+    color: "#dd1d1d"
+    isPrivate: false
+    metaSortKey: 1741737180719
+    _type: environment
+  - _id: env_ec9a2bdbe1044f4e81630b334291c94a
+    parentId: env_be09076edb3b49a18b860f850451062f05c01200
+    modified: 1741737251430
+    created: 1741737242274
+    name: Production
+    data: {}
+    dataPropertyOrder: null
+    color: "#3c9914"
+    isPrivate: false
+    metaSortKey: 1741737242274
+    _type: environment
