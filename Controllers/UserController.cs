@@ -1,6 +1,7 @@
 
 using cinemaratona.Models;
 using cinemaratona.Services;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cinemaratona.Controllers;
@@ -12,27 +13,28 @@ public class UserController(UserService userService): ControllerBase
     /// <summary>
     /// Retrieves a list of users.
     /// </summary>
-    /// <returns>A list of <see cref="User"/> objects.</returns>
+    /// <returns>A list of <see cref="UserResponse"/> objects.</returns>
     [HttpGet]
-    public ActionResult<List<User>> Get()
-    {
-        return Ok(userService.List());
+    public ActionResult<List<UserResponse>> Get()
+    {   
+        var users = userService.List().Adapt<List<UserResponse>>();
+        return Ok(users);
     }
 
     /// <summary>
     /// Retrieves a user by their ID.
     /// </summary>
     /// <param name="id">The ID of the user to retrieve.</param>
-    /// <returns>An <see cref="IActionResult"/> containing the user if found, otherwise a NotFound result.</returns>
+    /// <returns>An <see cref="ActionResult"/> containing the user if found, otherwise a NotFound result.</returns>
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public ActionResult<UserResponse> Get(int id)
     {   
         User? user = userService.Find(id);
         if (user == null)
         {
             return NotFound();
         }
-        return Ok(user);
+        return Ok(user.Adapt<UserResponse>());
     }
 
     /// <summary>
@@ -41,14 +43,14 @@ public class UserController(UserService userService): ControllerBase
     /// <param name="user">The user to create.</param>
     /// <returns>An <see cref="IActionResult"/> containing the created user and the location of the new user.</returns>
     [HttpPost]
-    public IActionResult Post([FromBody] User user)
+    public ActionResult<UserResponse> Post([FromBody] User user)
     {
         User? returned = userService.Include(user);
         if (returned == null)
         {
             return BadRequest();
         }
-        return CreatedAtAction("Get", new { id = returned.Id }, returned);
+        return Created(returned.Adapt<UserResponse>().Id.ToString(), returned);
     }
 
     /// <summary>
@@ -62,7 +64,7 @@ public class UserController(UserService userService): ControllerBase
         var userToUpdate = userService.Update(user);
         if(userToUpdate != null)
         {
-            return Ok(user);
+            return Ok(user.Adapt<UserResponse>());
         }
         return NotFound();
     }
@@ -79,7 +81,7 @@ public class UserController(UserService userService): ControllerBase
         
         if (user != null)
         {
-            return Ok(user);
+            return Ok(user.Adapt<UserResponse>());
         }
         return NotFound();
     }
