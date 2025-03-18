@@ -3,9 +3,16 @@ using cinemaratona.Repositories;
 
 namespace cinemaratona.Services;
 
-public class UserService(UserRepository userRepository)
+public class UserService
 {
-    private readonly UserRepository _userRepository = userRepository;
+    private readonly UserRepository _userRepository;
+    private readonly PasswordService _passwordService;
+
+    public UserService(UserRepository userRepository, PasswordService passwordService)
+    {
+        _userRepository = userRepository;
+        _passwordService = passwordService;
+    }
 
     public List<User> List()
     {
@@ -14,6 +21,8 @@ public class UserService(UserRepository userRepository)
 
     public User? Include(User user)
     {
+        // Hash da senha antes de salvar no banco
+        user.Password = _passwordService.HashPassword(user.Password);
         return _userRepository.Include(user);
     }
 
@@ -29,6 +38,29 @@ public class UserService(UserRepository userRepository)
 
     public User? Update(User user)
     {
+        var existingUser = _userRepository.Find(user.Id);
+        if (existingUser == null) return null;
+        
+        // Se estiver atualizando a senha, faça o hash novamente
+        if (user.Password != existingUser.Password)
+        {
+            user.Password = _passwordService.HashPassword(user.Password);
+        }
+        
         return _userRepository.Update(user);
+    }
+
+    public User? Authenticate(string email, string password)
+    {
+        var users = _userRepository.List();
+        var user = users.FirstOrDefault(u => u.Email == email);
+        
+        // Verifica se o usuário existe e se a senha está correta
+        if (user != null && _passwordService.VerifyPassword(password, user.Password))
+        {
+            return user;
+        }
+        
+        return null;
     }
 }

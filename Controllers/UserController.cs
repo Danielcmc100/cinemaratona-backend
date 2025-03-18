@@ -1,4 +1,3 @@
-
 using cinemaratona.Models;
 using cinemaratona.Services;
 using Mapster;
@@ -8,8 +7,15 @@ namespace cinemaratona.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController(UserService userService): ControllerBase
+public class UserController : ControllerBase
 {
+    private readonly UserService _userService;
+
+    public UserController(UserService userService)
+    {
+        _userService = userService;
+    }
+
     /// <summary>
     /// Retrieves a list of users.
     /// </summary>
@@ -17,7 +23,7 @@ public class UserController(UserService userService): ControllerBase
     [HttpGet]
     public ActionResult<List<UserResponse>> Get()
     {   
-        var users = userService.List().Adapt<List<UserResponse>>();
+        var users = _userService.List().Adapt<List<UserResponse>>();
         return Ok(users);
     }
 
@@ -29,7 +35,7 @@ public class UserController(UserService userService): ControllerBase
     [HttpGet("{id}")]
     public ActionResult<UserResponse> Get(int id)
     {   
-        User? user = userService.Find(id);
+        User? user = _userService.Find(id);
         if (user == null)
         {
             return NotFound();
@@ -45,12 +51,12 @@ public class UserController(UserService userService): ControllerBase
     [HttpPost]
     public ActionResult<UserResponse> Post([FromBody] User user)
     {
-        User? returned = userService.Include(user);
+        User? returned = _userService.Include(user);
         if (returned == null)
         {
             return BadRequest();
         }
-        return Created(returned.Adapt<UserResponse>().Id.ToString(), returned);
+        return Created(returned.Adapt<UserResponse>().Id.ToString(), returned.Adapt<UserResponse>());
     }
 
     /// <summary>
@@ -61,10 +67,10 @@ public class UserController(UserService userService): ControllerBase
     [HttpPut]
     public IActionResult Put([FromBody] User user)
     {   
-        var userToUpdate = userService.Update(user);
+        var userToUpdate = _userService.Update(user);
         if(userToUpdate != null)
         {
-            return Ok(user.Adapt<UserResponse>());
+            return Ok(userToUpdate.Adapt<UserResponse>());
         }
         return NotFound();
     }
@@ -77,12 +83,30 @@ public class UserController(UserService userService): ControllerBase
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        User? user = userService.Delete(id);
+        User? user = _userService.Delete(id);
         
         if (user != null)
         {
             return Ok(user.Adapt<UserResponse>());
         }
         return NotFound();
+    }
+
+    /// <summary>
+    /// Authenticates a user with email and password.
+    /// </summary>
+    /// <param name="request">The authentication request containing email and password.</param>
+    /// <returns>An <see cref="IActionResult"/> containing the authenticated user if successful, otherwise an Unauthorized result.</returns>
+    [HttpPost("login")]
+    public IActionResult Login([FromBody] AuthRequest request)
+    {
+        var user = _userService.Authenticate(request.Email, request.Password);
+        
+        if (user != null)
+        {
+            return Ok(user.Adapt<UserResponse>());
+        }
+        
+        return Unauthorized("Email ou senha inválidos");
     }
 }

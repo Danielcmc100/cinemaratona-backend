@@ -22,9 +22,8 @@ builder.Services.AddDbContext<CinemaratonaContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddScoped<UserRepository>();
-
 builder.Services.AddScoped<UserService>();
-
+builder.Services.AddScoped<PasswordService>();
 
 var app = builder.Build();
 
