@@ -27,6 +27,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    environment:
+    - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=cinemaratona;Username=postgres;Password=postgres
 
 volumes:
   postgres-data:
