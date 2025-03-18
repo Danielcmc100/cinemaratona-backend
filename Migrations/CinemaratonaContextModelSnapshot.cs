@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using cinemaratona.Data;
 
 #nullable disable
@@ -15,37 +16,43 @@ namespace cinemaratona.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.3")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("cinemaratona.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("MovieId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
-                    b.PrimitiveCollection<string>("UsersId")
+                    b.PrimitiveCollection<int[]>("UsersId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("integer[]");
 
                     b.HasKey("Id");
 
@@ -56,20 +63,22 @@ namespace cinemaratona.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("User1Id")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<int>("User2Id")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -80,28 +89,30 @@ namespace cinemaratona.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Createdat")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Movieid")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Opinion")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<int>("Rating")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<bool>("Recommended")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Userid")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<bool>("Watched")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -112,37 +123,39 @@ namespace cinemaratona.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
-                    b.PrimitiveCollection<string>("FavoriteGenres")
-                        .HasColumnType("TEXT");
+                    b.PrimitiveCollection<string[]>("FavoriteGenres")
+                        .HasColumnType("text[]");
 
-                    b.PrimitiveCollection<string>("FavoriteMovies")
-                        .HasColumnType("TEXT");
+                    b.PrimitiveCollection<int[]>("FavoriteMovies")
+                        .HasColumnType("integer[]");
 
                     b.Property<string>("Links")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("PhotoUrl")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

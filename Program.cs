@@ -19,7 +19,7 @@ if (connectionString is null)
 }
 
 builder.Services.AddDbContext<CinemaratonaContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddScoped<UserRepository>();
 
