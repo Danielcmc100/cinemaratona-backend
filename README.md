@@ -43,6 +43,17 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
 
 2. A aplicação será iniciada em `http://localhost:5199` por padrão. Você pode acessar a documentação da API em `http://localhost:5199/swagger`.
 
+## Executando com Docker Compose
+
+1. Certifique-se de que você tem o Docker e o Docker Compose instalados.
+
+2. Construa e inicie os containers:
+    ```sh
+    docker-compose up --build
+    ```
+
+3. A aplicação será iniciada em `http://localhost:5199` por padrão. Você pode acessar a documentação da API em `http://localhost:5199/swagger`.
+
 ## Executando Testes
 
 Para executar os testes, use o seguinte comando:
