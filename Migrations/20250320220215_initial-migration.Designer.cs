@@ -12,8 +12,8 @@ using cinemaratona.Data;
 namespace cinemaratona.Migrations
 {
     [DbContext(typeof(CinemaratonaContext))]
-    [Migration("20250317015415_postgress")]
-    partial class postgress
+    [Migration("20250320220215_initial-migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,10 +96,10 @@ namespace cinemaratona.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Createdat")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Movieid")
+                    b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Opinion")
@@ -111,7 +111,7 @@ namespace cinemaratona.Migrations
                     b.Property<bool>("Recommended")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("Userid")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("Watched")

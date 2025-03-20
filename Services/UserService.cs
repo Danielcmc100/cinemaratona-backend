@@ -3,16 +3,10 @@ using cinemaratona.Repositories;
 
 namespace cinemaratona.Services;
 
-public class UserService
+public class UserService(UserRepository userRepository, PasswordService passwordService)
 {
-    private readonly UserRepository _userRepository;
-    private readonly PasswordService _passwordService;
-
-    public UserService(UserRepository userRepository, PasswordService passwordService)
-    {
-        _userRepository = userRepository;
-        _passwordService = passwordService;
-    }
+    private readonly UserRepository _userRepository = userRepository;
+    private readonly PasswordService _passwordService = passwordService;
 
     public List<User> List()
     {

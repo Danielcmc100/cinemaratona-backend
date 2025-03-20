@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace cinemaratona.Migrations
 {
     /// <inheritdoc />
-    public partial class postgress : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,10 +53,10 @@ namespace cinemaratona.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Userid = table.Column<int>(type: "integer", nullable: false),
-                    Movieid = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    MovieId = table.Column<int>(type: "integer", nullable: false),
                     Opinion = table.Column<string>(type: "text", nullable: true),
-                    Createdat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     Recommended = table.Column<bool>(type: "boolean", nullable: false),
                     Watched = table.Column<bool>(type: "boolean", nullable: false)

@@ -21,9 +21,18 @@ if (connectionString is null)
 builder.Services.AddDbContext<CinemaratonaContext>(options =>
     options.UseNpgsql(connectionString));
 
+// Register repositories
 builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ReviewRepository>();
+builder.Services.AddScoped<EventRepository>();
+builder.Services.AddScoped<FriendshipRepository>();
+
+// Register services
 builder.Services.AddScoped<PasswordService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ReviewService>();
+builder.Services.AddScoped<EventService>();
+builder.Services.AddScoped<FriendshipService>();
 
 var app = builder.Build();
 
