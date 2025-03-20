@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2025-03-16T16:44:26.990Z
+__export_date: 2025-03-20T22:28:45.281Z
 __export_source: insomnia.desktop.app:v10.1.1
 resources:
   - _id: req_71bc5e7c2e8f43dc8af43a71a5f55783
     parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
-    modified: 1742094420810
+    modified: 1742338283296
     created: 1742094189918
     url: "{{ _.url }}/{{ _.resource }}"
     name: Get
@@ -29,9 +29,9 @@ resources:
     _type: request
   - _id: fld_f3c928d882cc491fb1cf0adc51d7e6bd
     parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
-    modified: 1742094228345
+    modified: 1742509702491
     created: 1742094189917
-    name: Usuarios
+    name: User
     description: ""
     environment:
       resource: user
@@ -50,9 +50,9 @@ resources:
     _type: workspace
   - _id: req_1b5eb81037834f87a28df3d49edb0e64
     parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
-    modified: 1742142220105
+    modified: 1742339417786
     created: 1742094189919
-    url: "{{ _.url }}/{{ _.resource }}/1"
+    url: "{{ _.url }}/{{ _.resource }}/7"
     name: Get by id
     description: ""
     method: GET
@@ -79,7 +79,7 @@ resources:
     _type: request
   - _id: req_eb39f62a833d455796d62954bc05062b
     parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
-    modified: 1742096248097
+    modified: 1742339935430
     created: 1742094189921
     url: "{{ _.url }}/{{ _.resource }}"
     name: Post
@@ -118,7 +118,7 @@ resources:
     _type: request
   - _id: req_453c2f03e79b418d886b49192e711d92
     parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
-    modified: 1742142378846
+    modified: 1742338321423
     created: 1742094189922
     url: "{{ _.url }}/{{ _.resource }}/"
     name: Put
@@ -160,6 +160,559 @@ resources:
     parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
     modified: 1742142484711
     created: 1742094189923
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_5e98c0baad9e4aa79f3085fe1b08da97
+        name: ""
+        value: ""
+        description: ""
+        disabled: true
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1733966071623.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_52a322946a7d4beba4ffa560760f1f12
+    parentId: fld_f3c928d882cc491fb1cf0adc51d7e6bd
+    modified: 1742339969817
+    created: 1742339442374
+    url: "{{ _.url }}/{{ _.resource }}/login"
+    name: Login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "Eleanore_Kirlin@yahoo.com",
+        	"password": "123"
+        }
+    parameters:
+      - id: pair_5e98c0baad9e4aa79f3085fe1b08da97
+        name: ""
+        value: ""
+        description: ""
+        disabled: true
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1732670949263.25
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_32194335fa624a788c564bd7aeb3fe9e
+    parentId: fld_02154d52a0f7432a812d834ab6fc2210
+    modified: 1742342684317
+    created: 1742342684317
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805985
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_02154d52a0f7432a812d834ab6fc2210
+    parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
+    modified: 1742342758573
+    created: 1742342684317
+    name: Review
+    description: ""
+    environment:
+      resource: review
+    environmentPropertyOrder:
+      "&":
+        - resource
+    metaSortKey: -1741737781256
+    _type: request_group
+  - _id: req_c649da3189ed40eba5435fc82505a390
+    parentId: fld_02154d52a0f7432a812d834ab6fc2210
+    modified: 1742508494935
+    created: 1742342684318
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Get by id
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_856b60691d0b4fdeadf44352637fb60a
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805885
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_08116e6b76a54b39b60e2393b6acaa75
+    parentId: fld_02154d52a0f7432a812d834ab6fc2210
+    modified: 1742508454186
+    created: 1742342684319
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Post
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "userId": 2,
+          "movieId": 34,
+          "opinion": "{% faker 'randomLoremText' %}",
+          "rating": 9,
+          "recommended": {% faker 'randomBoolean' %},
+          "watched": {% faker 'randomBoolean' %}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805785
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f0ba7d2b5f1c496b9fa7b01c99f094c3
+    parentId: fld_02154d52a0f7432a812d834ab6fc2210
+    modified: 1742342684320
+    created: 1742342684320
+    url: "{{ _.url }}/{{ _.resource }}/"
+    name: Put
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": 2,
+        	"userName": "Dome1791nica",
+        	"createdAt": "2026-03-07T03:30:26.232",
+        	"bio": "Natus tamisium color adnuo.",
+        	"favoriteGenres": [],
+        	"email": "Brant29@yahoo.com",
+        	"password": "G0m_VN7XVLcFr4A",
+        	"links": "",
+        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
+        	"favoriteMovies": []
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1736556316344
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cd2106a916b94c23bdcfce3d9364b345
+    parentId: fld_02154d52a0f7432a812d834ab6fc2210
+    modified: 1742342684320
+    created: 1742342684320
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_5e98c0baad9e4aa79f3085fe1b08da97
+        name: ""
+        value: ""
+        description: ""
+        disabled: true
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1733966071623.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4c3242ff08d2433d99d825e1a19df2fd
+    parentId: fld_9540ef39551f4bdc9dfd1e206b90de73
+    modified: 1742508600550
+    created: 1742508600550
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805985
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9540ef39551f4bdc9dfd1e206b90de73
+    parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
+    modified: 1742508623705
+    created: 1742508600549
+    name: Event
+    description: ""
+    environment:
+      resource: event
+    environmentPropertyOrder:
+      "&":
+        - resource
+    metaSortKey: -1741737781206
+    _type: request_group
+  - _id: req_a4158be8ec8c45739b63eed7f9ffa2ef
+    parentId: fld_9540ef39551f4bdc9dfd1e206b90de73
+    modified: 1742508600551
+    created: 1742508600551
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Get by id
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_856b60691d0b4fdeadf44352637fb60a
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805885
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_536be2a9d9024f68a5a0f1ebc49a2efd
+    parentId: fld_9540ef39551f4bdc9dfd1e206b90de73
+    modified: 1742508838004
+    created: 1742508600551
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Post
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "{% faker 'randomJobArea' %}",
+          "usersId": [
+            0
+          ],
+          "createdAt": "{% now 'iso-8601', '' %}",
+          "description": "{% faker 'randomLoremSentence' %}",
+          "location": "{% faker 'randomLocale' %}",
+          "date": "{% faker 'isoTimestamp' %}",
+          "movieId": 20
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805785
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4f82d077537b4a31b27aaab99efffe74
+    parentId: fld_9540ef39551f4bdc9dfd1e206b90de73
+    modified: 1742508600552
+    created: 1742508600552
+    url: "{{ _.url }}/{{ _.resource }}/"
+    name: Put
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": 2,
+        	"userName": "Dome1791nica",
+        	"createdAt": "2026-03-07T03:30:26.232",
+        	"bio": "Natus tamisium color adnuo.",
+        	"favoriteGenres": [],
+        	"email": "Brant29@yahoo.com",
+        	"password": "G0m_VN7XVLcFr4A",
+        	"links": "",
+        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
+        	"favoriteMovies": []
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1736556316344
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_042c46fe017d41d6bc65f4027e6048cb
+    parentId: fld_9540ef39551f4bdc9dfd1e206b90de73
+    modified: 1742508600552
+    created: 1742508600552
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_5e98c0baad9e4aa79f3085fe1b08da97
+        name: ""
+        value: ""
+        description: ""
+        disabled: true
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1733966071623.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f4aa66bdebe64a46a589d3205669a481
+    parentId: fld_58a675b5770d407aa9108d754b72f8ef
+    modified: 1742508631125
+    created: 1742508631125
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805985
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_58a675b5770d407aa9108d754b72f8ef
+    parentId: wrk_e787fa5cf04f4c749fca51505b05a69c
+    modified: 1742508631124
+    created: 1742508631124
+    name: Friendship
+    description: ""
+    environment:
+      resource: event
+    environmentPropertyOrder:
+      "&":
+        - resource
+    metaSortKey: -1741737781156
+    _type: request_group
+  - _id: req_40b0262c52024a96aba85448ed29a62e
+    parentId: fld_58a675b5770d407aa9108d754b72f8ef
+    modified: 1742508631126
+    created: 1742508631126
+    url: "{{ _.url }}/{{ _.resource }}/1"
+    name: Get by id
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_856b60691d0b4fdeadf44352637fb60a
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805885
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3f0a645e1b254ae8a15f833f61b0578a
+    parentId: fld_58a675b5770d407aa9108d754b72f8ef
+    modified: 1742508631126
+    created: 1742508631126
+    url: "{{ _.url }}/{{ _.resource }}"
+    name: Post
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "userId": 2,
+          "movieId": 34,
+          "opinion": "{% faker 'randomLoremText' %}",
+          "rating": 9,
+          "recommended": {% faker 'randomBoolean' %},
+          "watched": {% faker 'randomBoolean' %}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1741736805785
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bd6abe9c80234b8b938df36ba6e9ae4e
+    parentId: fld_58a675b5770d407aa9108d754b72f8ef
+    modified: 1742508631127
+    created: 1742508631127
+    url: "{{ _.url }}/{{ _.resource }}/"
+    name: Put
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": 2,
+        	"userName": "Dome1791nica",
+        	"createdAt": "2026-03-07T03:30:26.232",
+        	"bio": "Natus tamisium color adnuo.",
+        	"favoriteGenres": [],
+        	"email": "Brant29@yahoo.com",
+        	"password": "G0m_VN7XVLcFr4A",
+        	"links": "",
+        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
+        	"favoriteMovies": []
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.1.1
+    authentication: {}
+    metaSortKey: -1736556316344
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_99f00cb894594508bd92dfc47f9d4fc0
+    parentId: fld_58a675b5770d407aa9108d754b72f8ef
+    modified: 1742508631127
+    created: 1742508631127
     url: "{{ _.url }}/{{ _.resource }}/1"
     name: Delete
     description: ""
