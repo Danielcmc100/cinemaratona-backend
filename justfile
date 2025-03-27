@@ -8,7 +8,7 @@ build:
 
 # Run the project
 run:
-    dotnet run
+    dotnet run cinemaratona/
 
 # Clean build outputs
 clean:
