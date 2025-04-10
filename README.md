@@ -7,7 +7,7 @@ Este projeto é o backend para a aplicação Cinemaratona. Ele fornece APIs e se
 ## Pré-requisitos
 
 Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 
 ## Instalação
 
@@ -22,14 +22,7 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
     dotnet restore
     ```
 
-3. Atualize a string de conexão do banco de dados em `appsettings.json`:
-    ```json
-    "ConnectionStrings": {
-        "DefaultConnection": "SuaStringDeConexaoDoBancoDeDados"
-    }
-    ```
-
-4. Aplique as migrações do banco de dados:
+3. Aplique as migrações do banco de dados:
     ```sh
     dotnet ef database update
     ```
@@ -58,14 +51,14 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
 
 Para executar os testes, use o seguinte comando:
 ```sh
-dotnet test
+dotnet test TestCinemaratona
 ```
 
 ## Construindo o Projeto
 
 Para construir o projeto, use o seguinte comando:
 ```sh
-dotnet build
+dotnet build Cinemaratona
 ```
 
 ## Estrutura do Banco de Dados
