@@ -14,7 +14,7 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
 1. Clone o repositório:
     ```sh
     git clone https://github.com/yourusername/cinemaratona-backend.git
-    cd cinemaratona-backend
+    cd cinemaratona-backend/Cinemaratona
     ```
 
 2. Restaure as dependências:
