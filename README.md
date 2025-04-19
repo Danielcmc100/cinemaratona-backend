@@ -45,7 +45,9 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
     dotnet run
     ```
 
-2. A aplicação será iniciada em `http://localhost:5199` por padrão. Você pode acessar a documentação da API em `http://localhost:5199/swagger`.
+2. A aplicação será iniciada em `http://localhost:5199` por padrão. 
+
+Você pode acessar a documentação da API em `http://localhost:5199/swagger` ou importando o arquivo [insominia](Insomnia.yaml)
 
 ## Executando com Docker Compose
 
@@ -56,7 +58,7 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
     docker-compose up --build
     ```
 
-3. A aplicação será iniciada em `http://localhost:5199` por padrão. Você pode acessar a documentação da API em `http://localhost:5199/swagger`.
+3. A aplicação será iniciada em `http://localhost:5199` por padrão.
 
 ## Executando Testes
 
