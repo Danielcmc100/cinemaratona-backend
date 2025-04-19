@@ -98,6 +98,8 @@ Se você deseja contribuir para este projeto, siga estes passos:
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato com os mantenedores do projeto.
 
+# Diagrama de componentes / arquitetura
+
 ```mermaid
 graph TD
     subgraph API
@@ -136,13 +138,9 @@ graph TD
 
     %% Services -> Repositories
     UserService --> UserRepository
-    UserService --> PasswordService
-    UserService --> TokenService
     EventService --> EventRepository
-    EventService --> PasswordService
     ReviewService --> ReviewRepository
     FriendshipService --> FriendshipRepository
-    FriendshipService --> PasswordService
 
     %% Repositories -> DbContext
     UserRepository --> CinemaratonaContext
