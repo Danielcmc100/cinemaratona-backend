@@ -97,3 +97,59 @@ Se você deseja contribuir para este projeto, siga estes passos:
 ## Contato
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato com os mantenedores do projeto.
+
+```mermaid
+graph TD
+    subgraph API
+        UserController["UserController"]
+        EventController["EventController"]
+        ReviewController["ReviewController"]
+        FriendshipController["FriendshipController"]
+    end
+
+    subgraph Services
+        UserService["UserService"]
+        EventService["EventService"]
+        ReviewService["ReviewService"]
+        FriendshipService["FriendshipService"]
+        PasswordService["PasswordService"]
+        TokenService["TokenService"]
+    end
+
+    subgraph Repositories
+        UserRepository["UserRepository"]
+        EventRepository["EventRepository"]
+        ReviewRepository["ReviewRepository"]
+        FriendshipRepository["FriendshipRepository"]
+    end
+
+    subgraph Data
+        CinemaratonaContext["CinemaratonaContext (DbContext)"]
+        PostgreSQL["PostgreSQL Database"]
+    end
+
+    %% Controllers -> Services
+    UserController --> UserService
+    EventController --> EventService
+    ReviewController --> ReviewService
+    FriendshipController --> FriendshipService
+
+    %% Services -> Repositories
+    UserService --> UserRepository
+    UserService --> PasswordService
+    UserService --> TokenService
+    EventService --> EventRepository
+    EventService --> PasswordService
+    ReviewService --> ReviewRepository
+    FriendshipService --> FriendshipRepository
+    FriendshipService --> PasswordService
+
+    %% Repositories -> DbContext
+    UserRepository --> CinemaratonaContext
+    EventRepository --> CinemaratonaContext
+    ReviewRepository --> CinemaratonaContext
+    FriendshipRepository --> CinemaratonaContext
+
+    %% DbContext -> Database
+    CinemaratonaContext --> PostgreSQL
+```
