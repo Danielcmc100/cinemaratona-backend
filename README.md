@@ -27,6 +27,17 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
     dotnet ef database update
     ```
 
+4. Adicione uma chave para jwt:
+    - Utilizando user-secrets (local)
+    ```sh
+    dotnet user-secrets set "Jwt:Key" "sua-chave-secreta-supersegura"
+    ```
+
+    - Utilizando variaveis de ambiente (Hosting)
+    ```sh
+    Jwt__Key="sua-chave-secreta-supersegura"
+    ```
+
 ## Executando o Projeto
 
 1. Inicie a aplicação:
