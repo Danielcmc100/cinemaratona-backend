@@ -1,6 +1,7 @@
 using cinemaratona.Models;
 using cinemaratona.Services;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cinemaratona.Controllers;
@@ -11,6 +12,7 @@ public class FriendshipController(FriendshipService friendshipService) : Control
 {
     private readonly FriendshipService _friendshipService = friendshipService;
 
+    [Authorize]
     [HttpGet]
     public ActionResult<List<Friendship>> Get()
     {   
@@ -18,6 +20,7 @@ public class FriendshipController(FriendshipService friendshipService) : Control
         return Ok(friendships);
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Friendship> Get(int id)
     {   
@@ -29,6 +32,7 @@ public class FriendshipController(FriendshipService friendshipService) : Control
         return Ok(friendship.Adapt<Friendship>());
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult<Friendship> Post([FromBody] Friendship friendship)
     {
@@ -40,6 +44,7 @@ public class FriendshipController(FriendshipService friendshipService) : Control
         return Created(returned.Adapt<Friendship>().Id.ToString(), returned.Adapt<Friendship>());
     }
 
+    [Authorize]
     [HttpPut]
     public IActionResult Put([FromBody] Friendship friendship)
     {   
@@ -51,6 +56,7 @@ public class FriendshipController(FriendshipService friendshipService) : Control
         return NotFound();
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {

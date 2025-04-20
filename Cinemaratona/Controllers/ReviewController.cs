@@ -1,6 +1,7 @@
 using cinemaratona.Models;
 using cinemaratona.Services;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cinemaratona.Controllers;
@@ -29,6 +30,7 @@ public class ReviewController(ReviewService reviewService) : ControllerBase
         return Ok(review.Adapt<Review>());
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult<Review> Post([FromBody] Review review)
     {
@@ -40,6 +42,7 @@ public class ReviewController(ReviewService reviewService) : ControllerBase
         return Created(returned.Adapt<Review>().Id.ToString(), returned.Adapt<Review>());
     }
 
+    [Authorize]
     [HttpPut]
     public IActionResult Put([FromBody] Review review)
     {   
@@ -51,6 +54,7 @@ public class ReviewController(ReviewService reviewService) : ControllerBase
         return NotFound();
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
