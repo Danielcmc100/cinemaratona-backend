@@ -6,15 +6,21 @@ Este projeto é o backend para a aplicação Cinemaratona. Ele fornece APIs e se
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
 - [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Instalação
+## Variáveis de Ambiente
+
+- `Jwt:Key`: Chave secreta para geração de tokens JWT (obrigatória).
+- `ConnectionStrings__DefaultConnection`: String de conexão com o banco de dados (opcional, padrão já definido para desenvolvimento).
+
+## Instalação e Execução (Desenvolvimento)
 
 1. Clone o repositório:
     ```sh
     git clone https://github.com/yourusername/cinemaratona-backend.git
-    cd cinemaratona-backend/Cinemaratona
+    cd cinemaratona-backend
     ```
 
 2. Restaure as dependências:
@@ -22,50 +28,55 @@ Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
     dotnet restore
     ```
 
-3. Aplique as migrações do banco de dados:
+3. Suba o banco de dados:
+    ```sh
+    docker-compose up -d postgres
+    ```
+
+4. Aplique as migrações do banco de dados:
     ```sh
     dotnet ef database update
     ```
 
-4. Adicione uma chave para jwt:
-    - Utilizando user-secrets (local)
+5. Adicione uma chave para JWT (apenas desenvolvimento):
     ```sh
     dotnet user-secrets set "Jwt:Key" "sua-chave-secreta-supersegura"
     ```
 
-    - Utilizando variaveis de ambiente (Hosting)
+6. Inicie a aplicação:
     ```sh
-    Jwt__Key="sua-chave-secreta-supersegura"
+    dotnet run --project Cinemaratona
     ```
 
-## Executando o Projeto
+A aplicação estará disponível em `http://localhost:5199`.
 
-1. Inicie a aplicação:
+Você pode acessar a documentação da API em `http://localhost:5199/swagger` ou importar o arquivo [Insomnia.yaml](Insomnia.yaml) no Insomnia.
+
+## Execução com Docker Compose (Produção)
+
+1. Defina a chave JWT como variável de ambiente:
     ```sh
-    dotnet run
+    export Jwt__Key="sua-chave-secreta-supersegura"
     ```
-
-2. A aplicação será iniciada em `http://localhost:5199` por padrão. 
-
-Você pode acessar a documentação da API em `http://localhost:5199/swagger` ou importando o arquivo [insominia](Insomnia.yaml)
-
-## Executando com Docker Compose
-
-1. Certifique-se de que você tem o Docker e o Docker Compose instalados.
 
 2. Construa e inicie os containers:
     ```sh
     docker-compose up --build
     ```
 
-3. A aplicação será iniciada em `http://localhost:5199` por padrão.
+A aplicação estará disponível em `http://localhost:5199`.
 
 ## Executando Testes
 
-Para executar os testes, use o seguinte comando:
-```sh
-dotnet test TestCinemaratona
-```
+1. Restaure as dependências:
+    ```sh
+    dotnet restore
+    ```
+
+2. Execute os testes:
+    ```sh
+    dotnet test TestCinemaratona
+    ```
 
 ## Construindo o Projeto
 
@@ -105,7 +116,6 @@ Se você deseja contribuir para este projeto, siga estes passos:
 4. Comite suas alterações (`git commit -m 'Adicione alguma funcionalidade'`).
 5. Faça o push para o branch (`git push origin feature-branch`).
 6. Abra um pull request.
-
 
 ## Contato
 
