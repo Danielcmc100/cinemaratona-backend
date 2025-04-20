@@ -13,7 +13,7 @@ namespace cinemaratona.Migrations
 {
     [DbContext(typeof(CinemaratonaContext))]
     [Migration("20250320220215_initial-migration")]
-    partial class initialmigration
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
