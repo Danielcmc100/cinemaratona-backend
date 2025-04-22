@@ -1,0 +1,75 @@
+Table users {
+    id integer [primary key]
+    username varchar
+    created_at timestamp
+    bio text
+    favorite_genres varchar // Remover array, será normalizado em tabela separada
+    email varchar
+    password varchar
+    links text
+    photo_url varchar
+    favorite_movies integer // Remover array, será normalizado em tabela separada
+}
+
+// Tabela para normalizar os gêneros favoritos dos usuários (1FN)
+Table user_favorite_genres {
+    id integer [primary key]
+    user_id integer
+    genre varchar
+}
+
+Ref: user_favorite_genres.user_id > users.id
+
+// Tabela para normalizar os filmes favoritos dos usuários (1FN)
+Table user_favorite_movies {
+    id integer [primary key]
+    user_id integer
+    movie_id integer // ID do filme na API TMDb
+}
+
+Ref: user_favorite_movies.user_id > users.id
+
+Table friendships {
+    id integer [primary key]
+    user_1_id integer
+    user_2_id integer
+    created_at timestamp
+    status varchar [note: 'status can be pending, accepted, declined']
+}
+
+Ref: friendships.user_1_id > users.id
+
+Ref: friendships.user_2_id > users.id
+
+Table reviews {
+    id integer [primary key]
+    user_id integer
+    movie_id integer // ID do filme na API TMDb
+    opinion varchar
+    created_at timestamp
+    rating integer
+    recommended boolean
+    watched boolean
+}
+
+Ref: reviews.user_id > users.id
+
+Table events {
+    id integer [primary key]
+    title varchar
+    created_at timestamp
+    description text
+    location varchar
+    date timestamp
+    movie_id integer // ID do filme na API TMDb (opcional)
+}
+
+// Tabela para normalizar os usuários participantes dos eventos (1FN)
+Table event_users {
+    id integer [primary key]
+    event_id integer
+    user_id integer
+}
+
+Ref: event_users.event_id > events.id
+Ref: event_users.user_id > users.id
