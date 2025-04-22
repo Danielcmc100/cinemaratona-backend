@@ -96,13 +96,7 @@ O esquema do banco de dados está definido no arquivo `DatabaseSchema.dbml`. Ele
 
 ## Configuração do Insomnia
 
-Para facilitar o desenvolvimento e teste das APIs, um arquivo de configuração do Insomnia (`Insomnia.yaml`) está incluído no projeto. Ele contém as seguintes requisições:
-
-- `Get`: Recupera todos os usuários.
-- `Get by id`: Recupera um usuário específico pelo ID.
-- `Post`: Cria um novo usuário.
-- `Put`: Atualiza um usuário existente.
-- `Delete`: Remove um usuário pelo ID.
+Para facilitar o desenvolvimento e teste das APIs, um arquivo de configuração do Insomnia (`Insomnia.yaml`) está incluído no projeto. 
 
 Para usar o arquivo de configuração, importe-o no Insomnia e ajuste as variáveis de ambiente conforme necessário.
 
