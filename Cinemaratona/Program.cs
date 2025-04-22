@@ -2,11 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using cinemaratona.Data;
 using cinemaratona.Repositories;
 using cinemaratona.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -15,11 +17,8 @@ string? connectionString = builder.Configuration.GetConnectionString("DefaultCon
 
 if (connectionString is null)
 {
-    throw new ArgumentNullException("Connection string not found");
+    throw new ArgumentNullException(connectionString, "Connection string not found");
 }
-
-builder.Services.AddDbContext<CinemaratonaContext>(options =>
-    options.UseNpgsql(connectionString));
 
 // Register repositories
 builder.Services.AddScoped<UserRepository>();
@@ -33,6 +32,48 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ReviewService>();
 builder.Services.AddScoped<EventService>();
 builder.Services.AddScoped<FriendshipService>();
+builder.Services.AddScoped<TokenService>();
+
+// Configure JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+
+var jwtSigningKey = jwtSettings["Key"];
+
+if (string.IsNullOrEmpty(jwtSigningKey))
+{
+    throw new InvalidOperationException("JWT Key not configured");
+}
+
+var encodedJwtKey = Encoding.UTF8.GetBytes(jwtSigningKey);
+
+void ConfigureJwtBearer(IServiceCollection services, IConfigurationSection jwtSettings, byte[] key)
+{
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = jwtSettings["Issuer"],
+                ValidAudience = jwtSettings["Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(key)
+            };
+        });
+}
+
+void ConfigureDbContext(IServiceCollection services, string connectionString)
+{
+    services.AddDbContext<CinemaratonaContext>(options =>
+        options.UseNpgsql(connectionString));
+}
+
+ConfigureJwtBearer(builder.Services, jwtSettings, encodedJwtKey);
+ConfigureDbContext(builder.Services, connectionString);
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -44,7 +85,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

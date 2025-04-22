@@ -29,6 +29,7 @@ services:
         condition: service_healthy
     environment:
     - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=cinemaratona;Username=postgres;Password=postgres
+    - Jwt__Key="sua-chave-secreta-supersegura"
 
 volumes:
   postgres-data:

@@ -1,6 +1,7 @@
 using cinemaratona.Models;
 using cinemaratona.Services;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cinemaratona.Controllers;
@@ -11,6 +12,7 @@ public class EventController(EventService eventService) : ControllerBase
 {
     private readonly EventService _eventService = eventService;
 
+    [Authorize]
     [HttpGet]
     public ActionResult<List<Event>> Get()
     {   
@@ -18,6 +20,7 @@ public class EventController(EventService eventService) : ControllerBase
         return Ok(events);
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Event> Get(int id)
     {   
@@ -29,6 +32,7 @@ public class EventController(EventService eventService) : ControllerBase
         return Ok(event_obj.Adapt<Event>());
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult<Event> Post([FromBody] Event event_obj)
     {
@@ -40,6 +44,7 @@ public class EventController(EventService eventService) : ControllerBase
         return Created(returned.Adapt<Event>().Id.ToString(), returned.Adapt<Event>());
     }
 
+    [Authorize]
     [HttpPut]
     public IActionResult Put([FromBody] Event event_obj)
     {   
@@ -51,6 +56,7 @@ public class EventController(EventService eventService) : ControllerBase
         return NotFound();
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {

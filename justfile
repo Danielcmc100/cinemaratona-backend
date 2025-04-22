@@ -4,16 +4,16 @@ default:
 
 # Build the project
 build:
-    dotnet build
+    dotnet build Cinemaratona
 
 # Run the project
 run:
-    dotnet run cinemaratona/
+    dotnet run --project Cinemaratona
 
 # Clean build outputs
 clean:
     dotnet clean
-    rm -rf bin/ obj/
+    rm -rf bin/obj/
 
 # Restore packages
 restore:
@@ -31,15 +31,15 @@ db-migration name:
 db-migration-remove:
     dotnet ef migrations remove
 
-# Start services with Docker Compose
+# Start only postgres service with Docker Compose (dev)
 docker-up:
-    docker-compose up -d
+    docker-compose up -d postgres
 
 # Stop Docker Compose services
 docker-down:
     docker-compose down
 
-# Build and start services with Docker Compose
+# Build and start all services with Docker Compose
 docker-rebuild:
     docker-compose up -d --build
 
@@ -49,11 +49,11 @@ docker-logs:
 
 # Run tests
 test:
-    dotnet test
+    dotnet test TestCinemaratona
 
 # Watch for changes and restart the app when detected
 watch:
-    dotnet watch run
+    dotnet watch --project Cinemaratona run
 
 # Build Docker image
 docker-build:

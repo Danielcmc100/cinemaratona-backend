@@ -3,10 +3,9 @@ using cinemaratona.Repositories;
 
 namespace cinemaratona.Services;
 
-public class FriendshipService(FriendshipRepository friendshipRepository, PasswordService passwordService)
+public class FriendshipService(FriendshipRepository friendshipRepository)
 {
     private readonly FriendshipRepository _friendshipRepository = friendshipRepository;
-    private readonly PasswordService _passwordService = passwordService;
 
     public List<Friendship> List()
     {
