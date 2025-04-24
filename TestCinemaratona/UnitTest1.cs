@@ -3,8 +3,8 @@
 public class UnitTest1
 {
     [Fact]
-    public void Test1()
+    public void HelloWorldTest()
     {
-
+        Assert.Equal("Hello, World!", "Hello, World!");
     }
 }
