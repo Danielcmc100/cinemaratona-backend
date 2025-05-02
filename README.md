@@ -152,12 +152,15 @@ graph TD
     EventController --> EventService
     ReviewController --> ReviewService
     FriendshipController --> FriendshipService
+    UserController --> PasswordService
+    UserController --> TokenService
 
     %% Services -> Repositories
     UserService --> UserRepository
     EventService --> EventRepository
     ReviewService --> ReviewRepository
     FriendshipService --> FriendshipRepository
+    TokenService --> UserRepository
 
     %% Repositories -> DbContext
     UserRepository --> CinemaratonaContext
