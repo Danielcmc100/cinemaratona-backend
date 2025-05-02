@@ -40,7 +40,7 @@ Este projeto é o backend para a aplicação Cinemaratona. Ele fornece APIs e se
 
 5. Adicione uma chave para JWT (apenas desenvolvimento):
     ```sh
-    dotnet user-secrets set "Jwt:Key" "sua-chave-secreta-supersegura"
+    dotnet user-secrets set "Jwt:Key" "this-is-a-super-secret-key-32-bytes!!"
     ```
 
 6. Inicie a aplicação:
@@ -56,7 +56,7 @@ Você pode acessar a documentação da API em `http://localhost:5199/swagger` ou
 
 1. Defina a chave JWT como variável de ambiente:
     ```sh
-    export Jwt__Key="sua-chave-secreta-supersegura"
+    export Jwt__Key="this-is-a-super-secret-key-32-bytes!!"
     ```
 
 2. Construa e inicie os containers:

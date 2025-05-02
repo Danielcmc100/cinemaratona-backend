@@ -3,10 +3,9 @@ using cinemaratona.Repositories;
 
 namespace cinemaratona.Services;
 
-public class EventService(EventRepository eventRepository, PasswordService passwordService)
+public class EventService(EventRepository eventRepository)
 {
     private readonly EventRepository _eventRepository = eventRepository;
-    private readonly PasswordService _passwordService = passwordService;
 
     public List<Event> List()
     {
