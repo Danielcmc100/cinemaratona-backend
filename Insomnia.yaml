@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2025-04-22T02:07:20.964Z
+__export_date: 2025-05-04T01:49:49.658Z
 __export_source: insomnia.desktop.app:v10.1.1
 resources:
   - _id: req_3896da90ae2741fba83cd5c7764f9376
@@ -32,7 +32,7 @@ resources:
     _type: request
   - _id: fld_3d04da48f55b428992ed90b3b0b2201d
     parentId: wrk_f0aff72ff5094d4891d122760e0cfaa2
-    modified: 1742509702491
+    modified: 1746219110232
     created: 1742094189917
     name: User
     description: ""
@@ -120,7 +120,7 @@ resources:
     _type: request
   - _id: req_bc74700f136f462e8df6ce5b93dae629
     parentId: fld_3d04da48f55b428992ed90b3b0b2201d
-    modified: 1742338321423
+    modified: 1746219508612
     created: 1742094189922
     url: "{{ _.url }}/{{ _.resource }}/"
     name: Put
@@ -128,18 +128,15 @@ resources:
     method: PUT
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
         	"id": 2,
-        	"userName": "Dome1791nica",
-        	"createdAt": "2026-03-07T03:30:26.232",
-        	"bio": "Natus tamisium color adnuo.",
-        	"favoriteGenres": [],
-        	"email": "Brant29@yahoo.com",
-        	"password": "G0m_VN7XVLcFr4A",
-        	"links": "",
-        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
-        	"favoriteMovies": []
+        	"userName": "{% response 'body', 'req_212a395cf4c4479eb82b3965481e35d6', 'b64::JC51c2VyTmFtZQ==::46b', 'never', 60 %} a",
+        	"createdAt": "{% response 'body', 'req_212a395cf4c4479eb82b3965481e35d6', 'b64::JC5jcmVhdGVkQXQ=::46b', 'never', 60 %}",
+        	"bio": "{% response 'body', 'req_212a395cf4c4479eb82b3965481e35d6', 'b64::JC5iaW8=::46b', 'never', 60 %}",
+        	"email": "{% response 'body', 'req_212a395cf4c4479eb82b3965481e35d6', 'b64::JC5lbWFpbA==::46b', 'never', 60 %}",
+        	"password": "123",
+        	"photoUrl": "{% response 'body', 'req_212a395cf4c4479eb82b3965481e35d6', 'b64::JC5waG90b1VybA==::46b', 'never', 60 %}",
         }
     parameters: []
     headers:
@@ -147,7 +144,10 @@ resources:
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1736556316344
     isPrivate: false
     pathParameters: []
@@ -160,11 +160,11 @@ resources:
     _type: request
   - _id: req_30cfe3f09bfc4ed59868e2f4764a71f0
     parentId: fld_3d04da48f55b428992ed90b3b0b2201d
-    modified: 1745111551335
+    modified: 1746287125960
     created: 1742094189923
     url: "{{ _.url }}/{{ _.resource }}/{% response 'body',
-      'req_fd8fa9cfe1ea480092421de699b71276', 'b64::JC5pZA==::46b', 'never', 60
-      %}"
+      'req_3896da90ae2741fba83cd5c7764f9376', 'b64::JFswXS5pZA==::46b', 'never',
+      60 %}"
     name: Delete
     description: ""
     method: DELETE
@@ -268,9 +268,11 @@ resources:
     _type: request_group
   - _id: req_787d98f5414544d78ed67ecd42420311
     parentId: fld_ef622c6420484cddbf3a0a413d9cb7e5
-    modified: 1742508494935
+    modified: 1746224281061
     created: 1742342684318
-    url: "{{ _.url }}/{{ _.resource }}/1"
+    url: "{{ _.url }}/{{ _.resource }}/{% response 'body',
+      'req_532fe1f6a934499c83ca699ef5b8b67e', 'b64::JC5pZA==::46b', 'never', 60
+      %}"
     name: Get by id
     description: ""
     method: GET
@@ -284,7 +286,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'never', 60 %}"
     metaSortKey: -1741736805885
     isPrivate: false
     pathParameters: []
@@ -297,7 +302,7 @@ resources:
     _type: request
   - _id: req_532fe1f6a934499c83ca699ef5b8b67e
     parentId: fld_ef622c6420484cddbf3a0a413d9cb7e5
-    modified: 1742508454186
+    modified: 1746224151067
     created: 1742342684319
     url: "{{ _.url }}/{{ _.resource }}"
     name: Post
@@ -305,9 +310,9 @@ resources:
     method: POST
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
-          "userId": 2,
+          "userId": {% response 'body', 'req_212a395cf4c4479eb82b3965481e35d6', 'b64::JC5pZA==::46b', 'never', 60 %},
           "movieId": 34,
           "opinion": "{% faker 'randomLoremText' %}",
           "rating": 9,
@@ -320,7 +325,10 @@ resources:
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'never', 60 %}"
     metaSortKey: -1741736805785
     isPrivate: false
     pathParameters: []
@@ -333,7 +341,7 @@ resources:
     _type: request
   - _id: req_59cace2ca84c47ac9687752150a27653
     parentId: fld_ef622c6420484cddbf3a0a413d9cb7e5
-    modified: 1742342684320
+    modified: 1746224329636
     created: 1742342684320
     url: "{{ _.url }}/{{ _.resource }}/"
     name: Put
@@ -341,26 +349,19 @@ resources:
     method: PUT
     body:
       mimeType: application/json
-      text: |-
-        {
-        	"id": 2,
-        	"userName": "Dome1791nica",
-        	"createdAt": "2026-03-07T03:30:26.232",
-        	"bio": "Natus tamisium color adnuo.",
-        	"favoriteGenres": [],
-        	"email": "Brant29@yahoo.com",
-        	"password": "G0m_VN7XVLcFr4A",
-        	"links": "",
-        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
-        	"favoriteMovies": []
-        }
+      text: >
+        {% response 'raw', 'req_787d98f5414544d78ed67ecd42420311', '', 'never',
+        60 %}
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'never', 60 %}"
     metaSortKey: -1736556316344
     isPrivate: false
     pathParameters: []
@@ -373,9 +374,11 @@ resources:
     _type: request
   - _id: req_7b3090c60db144fabc3a63026e6e03ea
     parentId: fld_ef622c6420484cddbf3a0a413d9cb7e5
-    modified: 1742342684320
+    modified: 1746224335675
     created: 1742342684320
-    url: "{{ _.url }}/{{ _.resource }}/1"
+    url: "{{ _.url }}/{{ _.resource }}/{% response 'body',
+      'req_532fe1f6a934499c83ca699ef5b8b67e', 'b64::JC5pZA==::46b', 'never', 60
+      %}"
     name: Delete
     description: ""
     method: DELETE
@@ -389,7 +392,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'never', 60 %}"
     metaSortKey: -1733966071623.5
     isPrivate: false
     pathParameters: []
@@ -402,7 +408,7 @@ resources:
     _type: request
   - _id: req_e89cee1747cb4e2a996b541fffff45f4
     parentId: fld_4bcb61ae070c4619aac7c8fa502500d0
-    modified: 1742508600550
+    modified: 1745538654577
     created: 1742508600550
     url: "{{ _.url }}/{{ _.resource }}"
     name: Get
@@ -413,7 +419,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1741736805985
     isPrivate: false
     pathParameters: []
@@ -439,9 +448,11 @@ resources:
     _type: request_group
   - _id: req_d7b5c1fbc0094b4d90211e3adaef4910
     parentId: fld_4bcb61ae070c4619aac7c8fa502500d0
-    modified: 1742508600551
+    modified: 1746225508021
     created: 1742508600551
-    url: "{{ _.url }}/{{ _.resource }}/1"
+    url: "{{ _.url }}/{{ _.resource }}/{% response 'body',
+      'req_3658858226974410a7e5106a178b6b7e', 'b64::JC5pZA==::46b', 'never', 60
+      %}"
     name: Get by id
     description: ""
     method: GET
@@ -455,7 +466,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1741736805885
     isPrivate: false
     pathParameters: []
@@ -468,7 +482,7 @@ resources:
     _type: request
   - _id: req_3658858226974410a7e5106a178b6b7e
     parentId: fld_4bcb61ae070c4619aac7c8fa502500d0
-    modified: 1742508838004
+    modified: 1746225136906
     created: 1742508600551
     url: "{{ _.url }}/{{ _.resource }}"
     name: Post
@@ -476,12 +490,10 @@ resources:
     method: POST
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
           "title": "{% faker 'randomJobArea' %}",
-          "usersId": [
-            0
-          ],
+          "usersId": {% response 'body', 'req_3896da90ae2741fba83cd5c7764f9376', 'b64::JFsqXS5pZA==::46b', 'never', 60 %},
           "createdAt": "{% now 'iso-8601', '' %}",
           "description": "{% faker 'randomLoremSentence' %}",
           "location": "{% faker 'randomLocale' %}",
@@ -494,7 +506,10 @@ resources:
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1741736805785
     isPrivate: false
     pathParameters: []
@@ -507,7 +522,7 @@ resources:
     _type: request
   - _id: req_65ecb899492544c29f1f9e956852b854
     parentId: fld_4bcb61ae070c4619aac7c8fa502500d0
-    modified: 1742508600552
+    modified: 1746319242090
     created: 1742508600552
     url: "{{ _.url }}/{{ _.resource }}/"
     name: Put
@@ -515,26 +530,18 @@ resources:
     method: PUT
     body:
       mimeType: application/json
-      text: |-
-        {
-        	"id": 2,
-        	"userName": "Dome1791nica",
-        	"createdAt": "2026-03-07T03:30:26.232",
-        	"bio": "Natus tamisium color adnuo.",
-        	"favoriteGenres": [],
-        	"email": "Brant29@yahoo.com",
-        	"password": "G0m_VN7XVLcFr4A",
-        	"links": "",
-        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
-        	"favoriteMovies": []
-        }
+      text: "{% response 'raw', 'req_3658858226974410a7e5106a178b6b7e', '', 'never',
+        60 %}"
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1736556316344
     isPrivate: false
     pathParameters: []
@@ -547,9 +554,11 @@ resources:
     _type: request
   - _id: req_d672fed94b7c4510ada57e8395790dd0
     parentId: fld_4bcb61ae070c4619aac7c8fa502500d0
-    modified: 1742508600552
+    modified: 1746225459928
     created: 1742508600552
-    url: "{{ _.url }}/{{ _.resource }}/1"
+    url: "{{ _.url }}/{{ _.resource }}/{% response 'body',
+      'req_d7b5c1fbc0094b4d90211e3adaef4910', 'b64::JC5pZA==::46b', 'always', 60
+      %}"
     name: Delete
     description: ""
     method: DELETE
@@ -563,7 +572,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1733966071623.5
     isPrivate: false
     pathParameters: []
@@ -576,7 +588,7 @@ resources:
     _type: request
   - _id: req_8e187e9a44ac4b478d29626f8c7d381c
     parentId: fld_faaa4fb0bb93403494e4863b0ab29dc7
-    modified: 1742508631125
+    modified: 1745538812770
     created: 1742508631125
     url: "{{ _.url }}/{{ _.resource }}"
     name: Get
@@ -587,7 +599,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1741736805985
     isPrivate: false
     pathParameters: []
@@ -613,9 +628,9 @@ resources:
     _type: request_group
   - _id: req_2691d889d3af45c381e915f1fae888b3
     parentId: fld_faaa4fb0bb93403494e4863b0ab29dc7
-    modified: 1742508631126
+    modified: 1746319144964
     created: 1742508631126
-    url: "{{ _.url }}/{{ _.resource }}/1"
+    url: "{{ _.url }}/{{ _.resource }}/2"
     name: Get by id
     description: ""
     method: GET
@@ -629,7 +644,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1741736805885
     isPrivate: false
     pathParameters: []
@@ -642,7 +660,7 @@ resources:
     _type: request
   - _id: req_13f3207660554a408384632b412bdda5
     parentId: fld_faaa4fb0bb93403494e4863b0ab29dc7
-    modified: 1742508631126
+    modified: 1746319015043
     created: 1742508631126
     url: "{{ _.url }}/{{ _.resource }}"
     name: Post
@@ -652,12 +670,9 @@ resources:
       mimeType: application/json
       text: |-
         {
-          "userId": 2,
-          "movieId": 34,
-          "opinion": "{% faker 'randomLoremText' %}",
-          "rating": 9,
-          "recommended": {% faker 'randomBoolean' %},
-          "watched": {% faker 'randomBoolean' %}
+        	"User1Id": 1,
+        	"User2Id": 2,
+        	"Status": "pendente"
         }
     parameters: []
     headers:
@@ -665,7 +680,10 @@ resources:
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1741736805785
     isPrivate: false
     pathParameters: []
@@ -678,7 +696,7 @@ resources:
     _type: request
   - _id: req_316aced1721a470da67cae1ca7e00d6e
     parentId: fld_faaa4fb0bb93403494e4863b0ab29dc7
-    modified: 1742508631127
+    modified: 1746319119081
     created: 1742508631127
     url: "{{ _.url }}/{{ _.resource }}/"
     name: Put
@@ -686,26 +704,18 @@ resources:
     method: PUT
     body:
       mimeType: application/json
-      text: |-
-        {
-        	"id": 2,
-        	"userName": "Dome1791nica",
-        	"createdAt": "2026-03-07T03:30:26.232",
-        	"bio": "Natus tamisium color adnuo.",
-        	"favoriteGenres": [],
-        	"email": "Brant29@yahoo.com",
-        	"password": "G0m_VN7XVLcFr4A",
-        	"links": "",
-        	"photoUrl": "https://picsum.photos/seed/g6rRS47z3D/2124/1114",
-        	"favoriteMovies": []
-        }
+      text: "{% response 'raw', 'req_13f3207660554a408384632b412bdda5', '', 'never',
+        60 %}"
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1736556316344
     isPrivate: false
     pathParameters: []
@@ -718,7 +728,7 @@ resources:
     _type: request
   - _id: req_992758ebfa5f47b88e802952ecae01ec
     parentId: fld_faaa4fb0bb93403494e4863b0ab29dc7
-    modified: 1742508631127
+    modified: 1746319136384
     created: 1742508631127
     url: "{{ _.url }}/{{ _.resource }}/1"
     name: Delete
@@ -734,7 +744,10 @@ resources:
     headers:
       - name: User-Agent
         value: insomnia/10.1.1
-    authentication: {}
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_a53b472923e34057a85a6a99f3f2c114',
+        'b64::JC50b2tlbg==::46b', 'no-history', 60 %}"
     metaSortKey: -1733966071623.5
     isPrivate: false
     pathParameters: []
