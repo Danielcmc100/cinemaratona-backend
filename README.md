@@ -1,5 +1,31 @@
 # Cinemaratona Backend
 
+## Integrantes:
+
+>[!NOTE]
+> Nome: Kleber Daniel Mattos Viana. Matrícula: 06007199
+>
+> Nome: Bernard Abreu Machado. Matrícula: 06006244
+>
+> Nome: . Matrícula:
+>
+> Nome:. Matrícula: 
+>
+> Nome: . Matrícula:
+
+## Entregáveis engenharia de software:
+- [x]  Backlog completo (Coluna a fazer no Trello)
+- [x]  Trello demonstrando as atividades realizadas no período
+    https://trello.com/b/rrcDpbzz/cinemaratona
+- [x]  Back end completo e disponível em conta pública do GitHub
+    https://github.com/Danielcmc100/cinemaratona-backend
+- [x]  Coleção Postman (ou insomnia ou outro produto similar) para testar todos os endpoints
+    Arquivo Insomnia.yaml no repositório
+- [x]  Diagrama de componentes do produto
+    mermaid no readme
+- [x]  Vídeo explicando o sistema
+    https://youtu.be/VThpAyh2SsA
+
 ## Visão Geral
 
 Este projeto é o backend para a aplicação Cinemaratona. Ele fornece APIs e serviços para gerenciar e interagir com a plataforma Cinemaratona.
