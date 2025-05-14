@@ -7,9 +7,9 @@
 >
 > Nome: Bernard Abreu Machado. Matrícula: 06006244
 >
-> Nome: . Matrícula:
+> Nome:Hugo Norte . Matrícula: 06006259
 >
-> Nome:. Matrícula: 
+> Nome:Gabriel Maciel de Aguiar Silva . Matrícula: 06006665
 >
 > Nome: . Matrícula:
 
