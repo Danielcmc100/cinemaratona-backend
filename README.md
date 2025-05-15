@@ -3,15 +3,15 @@
 ## Integrantes:
 
 >[!NOTE]
-> Nome: Kleber Daniel Mattos Viana. Matrícula: 06007199
+> Nome: Kleber Daniel Mattos Viana. Matrícula: 06007199 Email: danielcmc100@gmail.com
 >
-> Nome: Bernard Abreu Machado. Matrícula: 06006244
+> Nome: Bernard Abreu Machado. Matrícula: 06006244 Email: benydepaull@hotmail.com
 >
-> Nome:Hugo Norte . Matrícula: 06006259
+> Nome:Hugo Norte . Matrícula: 06006259 Email: hugonorte@gmail.com
 >
-> Nome:Gabriel Maciel de Aguiar Silva . Matrícula: 06006665
+> Nome:Gabriel Maciel de Aguiar Silva . Matrícula: 06006665 Email: gabriielmaciel17@gmail.com
 >
-> Nome: Diego Eufrasio Martorana. Matrícula: 06006338
+> Nome: Diego Eufrasio Martorana. Matrícula: 06006338 Email: diego18tere@gmail.com
 
 ## Entregáveis engenharia de software:
 - [x]  Backlog completo (Coluna a fazer no Trello)
