@@ -11,7 +11,7 @@
 >
 > Nome:Gabriel Maciel de Aguiar Silva . Matrícula: 06006665
 >
-> Nome: . Matrícula:
+> Nome: Diego Eufrasio Martorana. Matrícula: 06006338
 
 ## Entregáveis engenharia de software:
 - [x]  Backlog completo (Coluna a fazer no Trello)
