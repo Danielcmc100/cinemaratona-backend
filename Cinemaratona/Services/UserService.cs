@@ -15,9 +15,40 @@ public class UserService(UserRepository userRepository, PasswordService password
 
     public User? Include(User user)
     {
-        // Hash da senha antes de salvar no banco
+        if (!IsValidEmail(user.Email))
+        {
+            throw new ArgumentException("Formato de email inválido.");
+        }
+
+        if (!IsStrongPassword(user.Password))
+        {
+            throw new ArgumentException("A senha não atende aos requisitos de segurança.");
+        }
+
         user.Password = _passwordService.HashPassword(user.Password);
         return _userRepository.Include(user);
+    }
+
+    private bool IsValidEmail(string email)
+    {
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private bool IsStrongPassword(string password)
+    {
+        return password.Length >= 8
+               && System.Text.RegularExpressions.Regex.IsMatch(password, "[A-Z]")
+               && System.Text.RegularExpressions.Regex.IsMatch(password, "[a-z]")
+               && System.Text.RegularExpressions.Regex.IsMatch(password, "\\d")
+               && System.Text.RegularExpressions.Regex.IsMatch(password, "[^a-zA-Z0-9]");
     }
 
     public User? Find(int id)
@@ -34,13 +65,13 @@ public class UserService(UserRepository userRepository, PasswordService password
     {
         var existingUser = _userRepository.Find(user.Id);
         if (existingUser == null) return null;
-        
+
         // Se estiver atualizando a senha, faça o hash novamente
         if (user.Password != existingUser.Password)
         {
             user.Password = _passwordService.HashPassword(user.Password);
         }
-        
+
         return _userRepository.Update(user);
     }
 
@@ -48,13 +79,13 @@ public class UserService(UserRepository userRepository, PasswordService password
     {
         var users = _userRepository.List();
         var user = users.FirstOrDefault(u => u.Email == email);
-        
+
         // Verifica se o usuário existe e se a senha está correta
         if (user != null && _passwordService.VerifyPassword(password, user.Password))
         {
             return user;
         }
-        
+
         return null;
     }
 }
