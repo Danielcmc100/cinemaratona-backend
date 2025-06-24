@@ -34,27 +34,30 @@ public class UserService(UserRepository userRepository, PasswordService password
     {
         var existingUser = _userRepository.Find(user.Id);
         if (existingUser == null) return null;
-        
+
         // Se estiver atualizando a senha, faça o hash novamente
         if (user.Password != existingUser.Password)
         {
             user.Password = _passwordService.HashPassword(user.Password);
         }
-        
+
         return _userRepository.Update(user);
     }
-
+  
     public User? Authenticate(string email, string password)
     {
-        var users = _userRepository.List();
-        var user = users.FirstOrDefault(u => u.Email == email);
+        var user = _userRepository.List().FirstOrDefault(u => u.Email == email);
         
-        // Verifica se o usuário existe e se a senha está correta
-        if (user != null && _passwordService.VerifyPassword(password, user.Password))
+        if (user != null && IsPasswordValid(password, user))
         {
             return user;
         }
         
         return null;
+    }
+
+    private bool IsPasswordValid(string password, User user)
+    {
+        return _passwordService.VerifyPassword(password, user.Password);
     }
 }
