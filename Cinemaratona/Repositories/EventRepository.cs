@@ -14,9 +14,22 @@ public class EventRepository(CinemaratonaContext context)
 
     public Event? Include(Event event_obj)
     {
-        _context.Event.Add(event_obj);
-        _context.SaveChanges();
-        return event_obj;
+        try
+        {
+            _context.Event.Add(event_obj);
+            _context.SaveChanges();
+            return event_obj;
+        }
+        catch (DbUpdateException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            return null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            return null;
+        }
     }
 
     public Event? Find(int id)

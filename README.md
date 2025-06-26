@@ -66,7 +66,7 @@ Este projeto é o backend para a aplicação Cinemaratona. Ele fornece APIs e se
 
 5. Adicione uma chave para JWT (apenas desenvolvimento):
     ```sh
-    dotnet user-secrets set "Jwt:Key" "this-is-a-super-secret-key-32-bytes!!"
+    dotnet user-secrets set "Jwt:Key" "this-is-a-super-secret-key-32-bytes"
     ```
 
 6. Inicie a aplicação:
