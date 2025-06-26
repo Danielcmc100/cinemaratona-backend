@@ -74,18 +74,21 @@ public class UserService(UserRepository userRepository, PasswordService password
 
         return _userRepository.Update(user);
     }
-
+  
     public User? Authenticate(string email, string password)
     {
-        var users = _userRepository.List();
-        var user = users.FirstOrDefault(u => u.Email == email);
-
-        // Verifica se o usuário existe e se a senha está correta
-        if (user != null && _passwordService.VerifyPassword(password, user.Password))
+        var user = _userRepository.List().FirstOrDefault(u => u.Email == email);
+        
+        if (user != null && IsPasswordValid(password, user))
         {
             return user;
         }
 
         return null;
+    }
+
+    private bool IsPasswordValid(string password, User user)
+    {
+        return _passwordService.VerifyPassword(password, user.Password);
     }
 }

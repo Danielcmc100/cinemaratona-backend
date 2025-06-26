@@ -1,5 +1,6 @@
 using cinemaratona.Data;
 using cinemaratona.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace cinemaratona.Repositories;
 
